@@ -1,6 +1,6 @@
 {
   "name": "capacitor-insets",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Capacitor plugin to control insets on Android and iOS devices.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

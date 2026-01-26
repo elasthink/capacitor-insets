@@ -7,10 +7,10 @@ import { InsetsType } from './definitions';
 function updateSafeAreaInsets(insets) {
     const prefix = 'safe';
     const style = document.documentElement.style;
-    style.setProperty(`--${prefix}-ins-top`, `${insets.top}px`);
-    style.setProperty(`--${prefix}-ins-right`, `${insets.right}px`);
-    style.setProperty(`--${prefix}-ins-bottom`, `${insets.bottom}px`);
-    style.setProperty(`--${prefix}-ins-left`, `${insets.left}px`);
+    style.setProperty(`--${prefix}-ins-top`, `max(${insets.top}px, env(safe-area-inset-top))`);
+    style.setProperty(`--${prefix}-ins-right`, `max(${insets.right}px, env(safe-area-inset-right))`);
+    style.setProperty(`--${prefix}-ins-bottom`, `max(${insets.bottom}px, env(safe-area-inset-bottom))`);
+    style.setProperty(`--${prefix}-ins-left`, `max(${insets.left}px, env(safe-area-inset-left))`);
 }
 /**
  * Update keyboard insets CSS variables.
