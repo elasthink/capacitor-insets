@@ -36,7 +36,11 @@ var capacitorInsets = (function (exports, core) {
     }
     // Plugin registration.
     const Insets = core.registerPlugin('Insets');
-    if (core.Capacitor.getPlatform() !== 'web') {
+    if (core.Capacitor.getPlatform() === 'web') {
+        // Get safe area insets at the start (web).
+        updateSafeAreaInsets({ top: 0, right: 0, bottom: 0, left: 0 });
+    }
+    else {
         // Get safe area insets at the start.
         Insets.getSafeAreaInsets().then(insets => {
             updateSafeAreaInsets(insets);
