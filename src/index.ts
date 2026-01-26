@@ -29,8 +29,12 @@ function updateKeyboardInsets(insets: Rect): void {
 // Plugin registration.
 const Insets = registerPlugin<InsetsPlugin>('Insets');
 
-if (Capacitor.getPlatform() !== 'web') {
 
+if (Capacitor.getPlatform() === 'web') {
+  // Get safe area insets at the start (web).
+  updateSafeAreaInsets({ top: 0, right: 0, bottom: 0, left: 0 });
+
+} else {
   // Get safe area insets at the start.
   Insets.getSafeAreaInsets().then(insets => {
     updateSafeAreaInsets(insets);
@@ -50,7 +54,6 @@ if (Capacitor.getPlatform() !== 'web') {
       updateKeyboardInsets(event.insets);
     }
   }).catch(err => console.error(err));
-
 }
 
 export { Insets };
